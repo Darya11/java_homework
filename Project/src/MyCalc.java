@@ -13,6 +13,19 @@ public class MyCalc {
         System.out.println("Check even number result: " + checkEvenNumber(334.51));
         System.out.println("Bit wise division by four: " + bitWiseDivByFour(2343.56));
         System.out.println("Century of year result: " + century(2018));
+
+
+        GetSeason.checkSeason(7);
+        GetSeason.checkSeason1(9);
+        Cycles.finalCycle();
+        //Do-while cycle with double random number
+        //Cycles.doWhile();
+        Cycles.counting();
+        Cycles.multiplicationTable();
+        Arithmetic.sumNumber(22557);
+        Arithmetic.factorial(5);
+        Arithmetic.arithmeticalProgression(10);
+
     }
 
     public static double add(double val1, double val2) {
