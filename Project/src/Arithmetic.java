@@ -24,8 +24,7 @@ public class Arithmetic {
     public static void arithmeticalProgression(int number){
         System.out.println("Arithmetical Progression from 10 to 38: ");
         while(number <=38){
-            if(number % 2 == 0)System.out.print(number + " ");
-            ++number;
+            number+=2;
 
         }
 
