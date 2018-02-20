@@ -23,9 +23,14 @@ public class Cycles {
     }
     public static void multiplicationTable(){
         System.out.println("Multiplication table");
-        int l = 0, d = 0;
-        while(l++ < 9 && d++ < 9) {
+        int l = 0, d = 1;
+        while(d <= 9 ) {
+            l++;
             System.out.println("Result of " + l + " and " + d + " = " + l*d);
+            if(l == 9){
+                l =0;
+                d++;
+            }
 
         }
     }
