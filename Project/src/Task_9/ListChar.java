@@ -4,45 +4,45 @@ import java.util.Arrays;
 
 public class ListChar {
     private char[] listChar;
-
-    public char[] getListChar() {
-        return listChar;
-    }
-
     private int element = 0;
+    private int size;
 
     ListChar() {
         this.listChar = new char[30];
-
 
     }
 
     ListChar(int size) {
         this.listChar = new char[size];
-
+        this.size = size;
     }
 
     public boolean add(char e) {
+        System.out.println("ADD FUNCTION:");
+        System.out.println(e);
         boolean newElem = false;
-        if (element <= listChar.length - 1) {
-            listChar[element] = e;
+        if (set(element, e)){
             element++;
             newElem = true;
-        } else if (element > listChar.length) {
-            System.out.println("Out of range!");
-            newElem = false;
+
         }
         return newElem;
     }
 
     public boolean set(int index, char c) {
+        if (size < 0){
+            return false;
+        }
         boolean setIndex = false;
         if (index <= listChar.length - 1) {
             listChar[index] = c;
             setIndex = true;
+            // TASK 13
         } else if (index >= listChar.length) {
-            System.out.println("Out of range!");
-            setIndex = false;
+           listChar = Arrays.copyOf(listChar, size * 2);
+           listChar[index] = c;
+           setIndex = true;
+
         }
         System.out.print("Char list: ");
         System.out.println(listChar);
@@ -92,48 +92,21 @@ public class ListChar {
     }
 
     public int getFullSize() {
-//        System.out.print("Array full size is: ");
         return listChar.length;
     }
 
     public int getFreeSize() {
-        int i;
-        int currentSize = 0;
-        int freeLen;
-        for (i = 0; i < listChar.length; i++) {
-            if (listChar[i] != 0) {
-                currentSize += 1;
-            }
-        }
-        freeLen = listChar.length - currentSize;
-//        System.out.print("Number of free elements of the list: ");
-        return freeLen;
+        return size - element;
     }
 
     public int length() {
-        int i;
-        int currentSize = 0;
 
-        for (i = 0; i < listChar.length; i++) {
-            if (listChar[i] != 0) {
-                currentSize += 1;
-            }
-        }
-//        System.out.print("Current size equals to: ");
-        return currentSize;
+        return element;
     }
 
     public boolean isEmpty() {
         boolean empty = false;
-        int i;
-        int currentSize = 0;
-        for (i = 0; i < listChar.length; i++) {
-            if (listChar[i] != 0) {
-                currentSize += 1;
-                empty = false;
-            }
-        }
-        if (currentSize == 0) {
+        if (element == 0){
             empty = true;
         }
         return empty;
@@ -164,24 +137,29 @@ public class ListChar {
     }
     public boolean addAll(ListChar listChar) {
         boolean addNewElem = false;
-        int lenList1 = this.length();
+        int lenList1 = element;
         int lenList2 = listChar.length();
-        int extendedList = this.getFreeSize();
+        int extendedList = size - element;
         if (lenList2 > extendedList){
             addNewElem = false;
         }
-        else {
             for (int i = lenList1; i < lenList1 + lenList2; i++) {
-                for (int j = 0; j <lenList2; j++) {
-                    this.listChar[i] = listChar.listChar[j];
-                    i++;
-                   addNewElem = true;
+                for (int j = 0; j < lenList2; j++) {
+                    if (set(i, listChar.listChar[j])) {
+                        this.listChar[i] = listChar.listChar[j];
+                        i++;
+                        addNewElem = true;
+                    }
                 }
             }
-        }
-        System.out.println(this.getListChar());
-            return addNewElem;
+
+
+        System.out.println(this.listChar);
+        return addNewElem;
     }
+
+
+
     public boolean equals(ListChar c){
         boolean equal = false;
         int g = 0;
@@ -208,6 +186,7 @@ public class ListChar {
 
         return equal;
     }
+// TASK 12
 
     @Override
     public boolean equals(Object obj) {

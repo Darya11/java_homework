@@ -2,34 +2,40 @@ package Task_9;
 
 public class SetChar extends ListChar {
     private char[] setChar;
-    private int element = 0;
+
+
+
 
 
     SetChar(int size){
         this.setChar = new char[size];
     }
 
-    @Override
-    public boolean add(char e) {
-        boolean newElem = false;
+    public boolean set(int index, char c) {
+        boolean setIndex = false;
         int count = 0;
-        System.out.println(setChar);
-        for (char a: setChar) {
-            if (a != e){
+        for (char a : setChar) {
+            if (a != c) {
                 count++;
+
             }
         }
-        if (element <= setChar.length - 1) {
-            setChar[element] = e;
-            element++;
+            if (index <= setChar.length - 1) {
+                setChar[index] = c;
 
-        } else if (element > setChar.length) {
-            System.out.println("Out of range!");
-            newElem = false;
+
+            } else if (index >= setChar.length) {
+                System.out.println("Out of range!");
+                setIndex = false;
+            }
+
+            if (count == setChar.length) {
+                setIndex = true;
+            }
+
+        System.out.println(setChar);
+        return setIndex;
         }
-         if (count == setChar.length){
-            newElem = true;
-        }
-        return newElem;
-    }
+
+
 }
