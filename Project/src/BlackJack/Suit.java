@@ -1,13 +1,12 @@
 package BlackJack;
 
-import java.util.Random;
 
 public enum Suit {
     Clubs, Diamonds, Hearts, Spades;
     private int count ;
     private static final Suit[] VALUES = values();
     private static final int SIZE = VALUES.length;
-//    private static final Random RANDOM = new Random();
+
 
     public static Suit[] getVALUES() {
         return VALUES;
@@ -31,12 +30,5 @@ public enum Suit {
         return VALUES[count];
     }
 
-//    public static Random getRANDOM() {
-//        return RANDOM;
-//    }
-
-//    public  Suit randomSuit(){
-//        return VALUES[RANDOM.nextInt(SIZE)];
-//    }
 
 }

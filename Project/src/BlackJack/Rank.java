@@ -1,7 +1,5 @@
 package BlackJack;
 
-import java.time.temporal.ValueRange;
-import java.util.Random;
 
 public enum Rank {
     SEVEN(7), EIGHT(8), NINE(9), TEN(10), JACK(2), QUEEN(3), KING(4), ACE(11);
@@ -9,7 +7,7 @@ public enum Rank {
     private final int RANK;
     private static final Rank[] VALUES = values();
     private static final int SIZE = VALUES.length;
-//    private static final Random RANDOM = new Random();
+
 
     Rank(int rank) {
         this.RANK = rank;
